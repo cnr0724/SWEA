@@ -1,0 +1,66 @@
+1차시(Runtime error):
+import java.util.Scanner;
+
+class Solution
+{
+	public static void main(String args[]) throws Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int T;
+		T=sc.nextInt();
+		int[] arr;
+
+		for(int test_case = 1; test_case <= T; test_case++)
+		{
+			arr=new int[26];
+			int a=sc.nextInt();
+			sc.nextLine();
+			for(int i=0;i<a;i++){
+				String s=sc.nextLine();
+				arr[s.charAt(0)-65]++;
+			}
+			int i=0;
+			int count=0;
+			while(arr[i]!=0){
+				count++;
+				i++;
+			}
+			System.out.println("#"+test_case+" "+count);
+        }
+	}
+}
+
+2차시:
+import java.util.Scanner;
+
+class Solution
+{
+	public static void main(String args[]) throws Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int T;
+		T=sc.nextInt();
+		int[] arr;
+        int a, i, count;
+        String s;
+
+		for(int test_case = 1; test_case <= T; test_case++)
+		{
+			arr=new int[26];
+			a=sc.nextInt();
+			sc.nextLine();
+			for(i=0;i<a;i++){
+				s=sc.nextLine();
+				arr[s.charAt(0)-65]++;
+			}
+			i=0;
+            count=0;
+			while(arr[i]!=0){
+				count++;
+				i++;
+                if(count==26) break;
+			}
+			System.out.println("#"+test_case+" "+count);
+        }
+	}
+}
