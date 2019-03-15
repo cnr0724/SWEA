@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+class Solution
+{
+	public static void main(String args[]) throws Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int T=1;
+
+		while(sc.hasNext()){
+			int l=sc.nextInt();
+			int[] arr=new int[l];
+			for(int i=0;i<l;i++){
+				arr[i]=sc.nextInt();
+			}
+			System.out.println("#"+T+" "+cal(arr));
+			T++;
+		}
+		sc.close();
+	}
+	
+	public static int cal(int[] arr){
+		int count=0;
+		
+		for(int i=0;i<arr.length;i++){
+			count+=min(i,arr);
+		}
+		
+		return count;
+	}
+	
+	public static int min(int i, int[] arr){
+		int min=arr[i];
+		if(i==0){
+			for(int j=1;j<i+3;j++){
+				if(min>=(arr[i]-arr[j])){
+					if(arr[i]-arr[j]>0){
+						min=arr[i]-arr[j];
+					}else{
+						min=0;
+						break;
+					}
+				}
+			}
+		}else if(i==1){
+			for(int j=0;j<i+3;j++){
+				if(i!=j&&min>=(arr[i]-arr[j])){
+					if(arr[i]-arr[j]>0){
+						min=arr[i]-arr[j];
+					}else{
+						min=0;
+						break;
+					}
+				}
+			}
+		}else if(i==arr.length-1){
+			for(int j=i-2;j<i;j++){
+				if(min>=(arr[i]-arr[j])){
+					if(arr[i]-arr[j]>0){
+						min=arr[i]-arr[j];
+					}else{
+						min=0;
+						break;
+					}
+				}
+			}
+		}else if(i==arr.length-2){
+			for(int j=i-2;j<arr.length;j++){
+				if(i!=j&&min>=(arr[i]-arr[j])){
+					if(arr[i]-arr[j]>0){
+						min=arr[i]-arr[j];
+					}else{
+						min=0;
+						break;
+					}
+				}
+			}
+		}else{
+			for(int j=i-2;j<i+3;j++){
+				if(i!=j&&min>=(arr[i]-arr[j])){
+					if(arr[i]-arr[j]>0){
+						min=arr[i]-arr[j];
+					}else{
+						min=0;
+						break;
+					}
+				}
+			}
+		}
+		return min;
+	}
+}
