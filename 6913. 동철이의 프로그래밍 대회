@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class Solution
+{
+	public static void main(String args[]) throws Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int T;
+		T=sc.nextInt();
+
+		for(int test_case = 1; test_case <= T; test_case++)
+		{
+			int N=sc.nextInt();
+			int M=sc.nextInt();
+			
+			int[] num=new int[N];
+			int count,a;
+			
+			for(int i=0;i<N;i++){
+				count=0;
+				for(int j=0;j<M;j++){
+					a=sc.nextInt();
+					if(a==1){
+						count++;
+					}
+				}
+				num[i]=count;
+			}
+			count=0;
+			int max=0;
+			for(int i=0;i<N;i++){
+				if(num[i]>max){
+					count=1;
+					max=num[i];
+				}else if(num[i]==max){
+					count++;
+				}
+			}
+			
+			System.out.println("#"+test_case+" "+count+" "+max);
+		}
+	}
+}
