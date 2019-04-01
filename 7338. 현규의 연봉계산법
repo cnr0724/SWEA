@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class Solution
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int T;
+		T=sc.nextInt();
+		
+		for(int test_case = 1; test_case <= T; test_case++)
+		{
+			long yearS=sc.nextLong();
+			long month=sc.nextInt();
+			month+=(yearS-2016)*12;
+			yearS=2016+(month/13);
+			month=month%13;
+      if(month==0){
+        yearS--;
+        month+=13;
+      }
+			System.out.println("#"+test_case+" "+yearS+" "+month);
+		}
+	}
+}
