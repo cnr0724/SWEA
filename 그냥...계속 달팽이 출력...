@@ -1,0 +1,32 @@
+//C++로 작성함.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	while(cin >> n){
+		int arnData[10][10] = { 0 };
+		int i = 0, j = -1, k = 0;
+		int nLength = n, nCounter = 0, nOffset = 1;
+		while (nCounter < n*n) {
+			for (k = 0; k < nLength * 2 - 1; ++k) {
+				if (k < nLength) j += nOffset;
+				else i += nOffset;
+				arnData[i][j] = ++nCounter;
+			}
+			nOffset *= (-1);
+			nLength--;
+		}
+		for (i = 0; i < n; ++i) {
+			for (j = 0; j < n; ++j) {
+				printf("%d\t", arnData[i][j]);
+			}
+			putchar('\n');
+		}
+	}
+	
+	return 0;
+}
+//다른 문제 풀다 처음에 조건 안 보고 걍 했던 것 때문에...여기에라도 남기려는 의도. n은 1부터 10까지로 제한되어 있음.
