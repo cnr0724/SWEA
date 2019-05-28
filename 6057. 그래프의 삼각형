@@ -1,0 +1,39 @@
+#include<iostream>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	int test_case, T, n , m, a, b, result;
+  int lines[51][51];
+	cin>>T;
+	for(test_case = 1; test_case <= T; ++test_case)
+	{
+    cin >> n >> m;
+		for (int i = 0; i < 51; i++) {
+			for (int j = 0; j < 51; j++) {
+				lines[i][j] = 0;
+			}
+		}
+		result = 0;
+
+		for (int i = 0; i < m; i++) {
+			cin >> a >> b;
+			lines[a][b] = 1;
+			lines[b][a] = 1;
+		}
+
+		for (int i = 1; i <= n; i++) {
+			for (int j = i + 1; j <= n; j++) {
+                if(lines[i][j]==0) continue;
+				for (int k = j + 1; k <= n; k++) {
+					if (lines[j][k]==0) continue;
+                    if (lines[i][k]==0) continue;
+                    result++;
+				}
+			}
+		}
+		cout << '#' << test_case << ' ' << result << '\n';
+	}
+	return 0;
+}
