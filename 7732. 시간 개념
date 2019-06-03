@@ -1,0 +1,55 @@
+#include<iostream>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	int test_case;
+	cin >> test_case;
+	int ch, cm, cs, ph, pm, ps, rh, rm, rs;
+
+	for (int t = 0; t < test_case; t++) {
+		scanf_s("%d:%d:%d", &ch, &cm, &cs);
+		scanf_s("%d:%d:%d", &ph, &pm, &ps);
+		rh = ph - ch;
+		rm = pm - cm;
+		rs = ps - cs;
+		if (rs < 0) {
+			rs += 60;
+			rm--;
+		}
+		if (rm < 0) {
+			rm += 60;
+			rh--;
+		}
+		if (rh < 0) {
+			rh += 24;
+		}
+
+		cout << '#' << t+1 << ' ';
+
+		if (rh < 10) {
+			cout << '0' << rh << ':';
+		}
+		else {
+			cout << rh << ':';
+		}
+
+		if (rm < 10) {
+			cout << '0' << rm << ':';
+		}
+		else {
+			cout << rm << ':';
+		}
+
+		if (rs < 10) {
+			cout << '0' << rs << endl;
+		}
+		else {
+			cout << rs << endl;
+
+		}
+	}
+
+	return 0;
+}
